@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+        <record id="view_profesor_tree" model="ir.ui.view">
+            <field name="name">profesor.profesor.tree</field>
+            <field name="model">profesor.profesor</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Profesor">
+                    <field name="nombre" />
+                    <field name="primer_apellido" />
+                    <field name="segundo_apellido" />
+                    <field name="genero" />
+                    <field name="edad" />
+                    <field name="fecha_nacimiento" />
+                    <field name="nacionalidad" />
+                    <field name="perfil" />
+                    <field name="asignatura" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_profesor_form" model="ir.ui.view">
+            <field name="name">profesor.profesor.form</field>
+            <field name="model">profesor.profesor</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Profesor">
+                    <sheet>
+                        <field name="foto" widget="image" class="oe_left oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="nombre" required="1" placeholder="Nombre" /></td>
+                                        <td style="padding-right:10px;"><field name="primer_apellido" placeholder="Apellido" /></td>
+                                        <td style="padding-right:10px;"><field name="segundo_apellido" placeholder="Apellido" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="personal_information"
+                                string="Información Personal">
+                                <group col="4" colspan="4"
+                                    name="personal_detail">
+                                    <field name="genero" />
+                                    <field name="edad" />
+                                    <field name="fecha_nacimiento" />
+                                    <field name="nacionalidad" />
+                                    <field name="perfil" />
+                                    <field name="asignatura" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_view_profesores">
+            <field name="name">Profesores</field>
+            <field name="res_model">profesor.profesor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea un nuevo profesor</p>
+            </field>
+        </record>
+
+
+         <record id="view_alumno_tree" model="ir.ui.view">
+            <field name="name">alumno.alumno.tree</field>
+            <field name="model">alumno.alumno</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Alumno">
+                    <field name="nombre" />
+                    <field name="primer_apellido" />
+                    <field name="segundo_apellido" />
+                    <field name="genero" />
+                    <field name="edad" />
+                    <field name="fecha_nacimiento" />
+                    <field name="nacionalidad" />
+                    <field name="calificacion examen final" />
+                    <field name="asignatura" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_alumno_form" model="ir.ui.view">
+            <field name="name">alumno.alumno.form</field>
+            <field name="model">alumno.alumno</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Alumno">
+                    <sheet>
+                        <field name="foto" widget="image" class="oe_left oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="nombre" required="1" placeholder="Nombre" /></td>
+                                        <td style="padding-right:10px;"><field name="primer_apellido" placeholder="Apellido" /></td>
+                                        <td style="padding-right:10px;"><field name="segundo_apellido" placeholder="Apellido" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="personal_information"
+                                string="Información Personal">
+                                <group col="4" colspan="4"
+                                    name="personal_detail">
+                                    <field name="genero" />
+                                    <field name="edad" />
+                                    <field name="fecha_nacimiento" />
+                                    <field name="nacionalidad" />
+                                    <field name="calificacion examen final" />
+                                    <field name="asignatura" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_view_alumnos">
+            <field name="name">Alumnos</field>
+            <field name="res_model">alumno.alumno</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea un nuevo alumno</p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_view_asignaturas">
+            <field name="name">Asignaturas</field>
+            <field name="res_model">asignatura.asignatura</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea una nueva asignatura</p>
+            </field>
+        </record>
+
+        <menuitem id="menu_escuela" name="Escuela"/>
+        <menuitem id="menu_profesor" name="Profesores" parent="menu_escuela"  
+                  action="action_view_profesores"/>
+        <menuitem id="menu_asignatura" name="Asignaturas" parent="menu_escuela"
+            action="action_view_asignaturas"/>/>
+        <menuitem id="menu_alumno" name="Alumnos" parent="menu_escuela"  
+                  action="action_view_alumnos"/>
+    </data>
+</odoo>
